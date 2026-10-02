@@ -4,31 +4,27 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>The obvious hire</title>
-        <link rel="preload" href="assets\fonts\alice-regular-webfont.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-        <link rel="preload" href="assets\fonts\sacramento-regular-webfont.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-        <link rel="preload" href="assets\fonts\sacramento-regular-webfont.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" href="assets/fonts/alice-regular-webfont.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" href="assets/fonts/sacramento-regular-webfont.woff2" as="font" type="font/woff2" crossorigin="anonymous">
         <style>
             @font-face {
                 font-display:swap;
                 font-family: 'alice';
                 src: local('alice'),
-                    url('assets/fonts/alice-regular-webfont.woff2') format('woff2'),
-                    url('assets/fonts/alice-regular-webfont.woff') format('woff');
+                    url("assets/fonts/alice-regular-webfont.woff2") format("woff2"),
+                    url("assets/fonts/alice-regular-webfont.woff") format("woff");
                     
                 font-weight: normal;
                 font-style: normal;
 
             }
 
-
-
-
             @font-face {
                 font-display:swap;
                 font-family: 'sacramento';
                 src: local('sacramento')
-                    url('assets/fonts/sacramento-regular-webfont.woff2') format('woff2'),
-                    url('assets/fonts/sacramento-regular-webfont.woff') format('woff');
+                    url("assets/fonts/sacramento-regular-webfont.woff2") format("woff2"),
+                    url("assets/fonts/sacramento-regular-webfont.woff") format("woff");
                 font-weight: normal;
                 font-style: normal;
             }
@@ -112,7 +108,11 @@
                         <h4>
                             InDesign
                         </h4>
-                        <img src="assets/tps-poster700.png" alt="A poster showcasing the didot font. The title 'Didot Type' is in the upper third center with non-letter forms of the font above it and displays of the letter forms below along converging lines of the muted plaid background."/>
+                        <img srcset="assets\tps-poster700.png 700w ,assets\tps-poster1000.png 1000w,assets\tps-poster1400.png 1400w" 
+                        sizes="(max-width => 600px) 600px, (width > 1375px) 900px, 100vw"
+                        src="assets\tps-poster1400.png" 
+                        alt="A poster showcasing the didot font. The title 'Didot Type' is in the upper third center with non-letter forms of the font above it and displays of the letter forms below along converging lines of the muted plaid background."
+                        />
                          <p>
                             description
                         </p>
@@ -121,7 +121,12 @@
                         <h4>
                             Illustrator
                         </h4>
-                        <img src="assets/Tucson700.png" alt="a graphic of the word 'tucson' spelled out with things that puts one in mind of tucson: a saguaro, horseshoe, gila monster, snake, wagon wheel and barrel cactus"/>
+
+                        <img 
+                        srcset="assets\Tucson700.png 700w ,assets\Tucson1000.png 1000w,assets\Tucson1400.png 1400w" 
+                        sizes="(max-width => 600px) 600px, (width > 1375px) 900px, 100vw"
+                        src="assets/Tucson1400.png" 
+                        alt="a graphic of the word 'tucson' spelled out with things that puts one in mind of tucson: a saguaro, horseshoe, gila monster, snake, wagon wheel and barrel cactus"/>
                         <p>
                             description
                         </p>

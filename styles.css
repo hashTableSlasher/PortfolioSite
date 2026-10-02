@@ -80,7 +80,7 @@
         --cushion:2em;
         /* I think this is dynamic spacing because it's based on the characters that are dynamically sized */
         /* changed cushion to halve it as test */
-        --small_cush: clamp(5px, 5cqw, 10px);
+        --small_cush: clamp(.3rem, 0.5cqw, .6rem);
         /* --three_card_size: clamp(200px, 100%,40em); */
 
         /* shape var */
@@ -94,11 +94,12 @@
         --header_font: 'sacramento',"Book Antiqua", serif, system-ui;
 
         /* These aren't that similar to chosen font but there's very little supported scripts, and docs said cursive isn't great alternative (I tried it out of curiosity and it gives me comic sans*/
-        --large-header: clamp(2.5rem,6cqw, 4rem);
-        --medium-header: clamp(2rem, 5cqw, 3.13rem);
+        --large-header: clamp(2.5rem,7cqw, 4rem);
+        --medium-header: clamp(2rem, 6cqw, 3.13rem);
         
-        --small-header: clamp(1.75rem,4cqw, 2.5rem); 
-        --body-size:clamp(1rem,1rem + 1.5vw ,1.25rem);
+        --small-header: clamp(1.75rem, 5cqw, 2.5rem); 
+        --body-size:clamp(1rem, 1.5cqw ,1.25rem);
+        --footer-size: clamp(.75rem, 1cqw, 1.25rem);
 
       /* For line height */
         --body_spc:2;
@@ -261,13 +262,17 @@
                 inline-size:100%;
                 margin-inline: auto;
                 /* Changed from auto-fill because I mixed up which one collapses column track */
-                grid-template-columns: repeat(auto-fit,minmax(min(25em,100%), 1fr));
+                grid-template-columns: repeat(auto-fit,minmax(min(25,100%), 1fr));
                 /* Justifies grid-items in their track */
                 justify-items: center;
                 justify-content: center;
                 gap:var(--between);
                 max-block-size: 100%;
                 padding:var(--cushion); }
+
+            .three-card{
+                inline-size: 100%;
+            }
             
              .one-card,.two-card,.three-card,.resume_card{
                     margin-block: 0;
@@ -299,7 +304,7 @@
         justify-content: center;
         align-content: center;
         line-height: var(--ft_spc);
-        font-size: clamp(small,1vw,20px);
+        font-size: var(--footer-size);
     }
     
 
@@ -357,12 +362,12 @@
         /* Changed width variables to fit into container */
        padding: var(--cushion);
        /* changed cards into subgrid to respect alignment with sibling cards */
-       /* inline-size: 100%; */
        place-self: center;
        grid-row: span 3;
        gap:var(--between);
        
     }
+    
 
 
     .two-card{
