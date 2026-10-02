@@ -1,8 +1,29 @@
 @layer reset, base, layout, components, utilities, states;
 /* @import url('https://fonts.googleapis.com/css2?famiy=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
 
-@import url('https://fonts.googleapis.com/css2?family=Alice&family=Sacramento&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Alice&family=Sacramento&display=swap'); */
 
+@font-face {
+    font-display:auto;
+    font-family: 'alice';
+    src: url('alice-regular-webfont.woff2') format('woff2'),
+         url('alice-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-display:auto;
+    font-family: 'sacramento';
+    src: url('sacramento-regular-webfont.woff2') format('woff2'),
+         url('sacramento-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 
 
@@ -82,7 +103,7 @@
         /* changed cushion to halve it as test */
         --cushion: clamp(5px, 5%, 2rem);
         --small_cush: clamp(5px, 5cqw, 10px);
-        --three_card_size: clamp(0px, 100%,40em);
+        --three_card_size: clamp(200px, 100%,40em);
 
         /* shape var */
 
@@ -90,9 +111,9 @@
 
         /* TEXT-VARS */
 
-        --body_font: Alice,"Book Antiqua", Baskerville, Palatino, Georgia , serif;
+        --body_font: 'alice',"Book Antiqua", Baskerville, Palatino, Georgia , serif,  system-ui ;
        
-        --header_font: Sacramento,"Book Antiqua", serif;
+        --header_font: 'sacramento',"Book Antiqua", serif, system-ui;
 
         /* These aren't that similar to chosen font but there's very little supported scripts, and docs said cursive isn't great alternative (I tried it out of curiosity and it gives me comic sans*/
         --large-header: clamp(2.5rem,6cqw, 4rem);
@@ -133,7 +154,7 @@
         max-inline-size:100%;
         min-inline-size: 0;
         inline-size: auto;
-        block-size: auto;
+        /* block-size: auto; */
         object-fit: contain;
         border-radius:var(--rounding);
         align-self: center;
@@ -372,7 +393,7 @@
        
         
         min-inline-size: 0;
-        margin:0;
+        /* margin:0; */
         max-inline-size: auto;
     }
 
@@ -388,11 +409,11 @@
         container-name:card_dependency;
     } 
 
-    .contact-card picture{
-        inline-size: 300px;
+    /* .contact-card picture { */
+        /* inline-size: 300px;
         border-radius: 200px;
     }
-    
+     */
 
     
     nav li{

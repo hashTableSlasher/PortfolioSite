@@ -1,0 +1,81 @@
+Test LOGS
+----------------------------------------
+single-column grid housing photos is about a little above 1421 before breaking into 2 columns
+    Further inspection (based on Firefox Dropdowns & responsive):
+        Galaxy NOTE 9 android, 3.5 dpr: 186px width for photo  x 3.5 --> needs 651px image > 
+        # at 4 dpr (scaled) that's 800px (or a bit shy of it) in width 
+        Galaxy S10 & Android 11, 4dpr: 142px width for photo x 4 --> needs 568px image
+        Galaxy S25 & Android 14, 3dpr, 142px width for photo x 3 --> needs  426px image
+        Galaxy Tab S9 Android 14, 2.5dpr, 427px width for photo x 2.5 --> needs  1,067.5px image
+        ipad (10/11th gen), dpr2, 514px width for photo x 2 --> needs 1018px image
+        ipad mini(6th gen) dpr2, 453px width for photo x 2 --> needs 906px image
+        ipad pro 11-inch, dpr2 526px width for photo x 2 --> needs 1052px image
+        iphone 14/16/17 , dpr3, 168px  width for photo x 3 --> needs 504px image
+        iphone 17 pro, dpr3, 176px width for photo x 3  --> needs 528px image
+        iphone SE, dpr2, 375px  width for photo x 2 --> needs 750px image
+        iphone XR, dpr2, 185px width for photo x 2 --> needs 375px image
+        laptop with MDPI / laptop with touch, dpr1, 709.4px width for photo x 1 --> needs 709px image
+        pixel 5, 2.75dpr, 168px width for image --> needs 462px image
+        pixel 8/9, 2.625dpr, 184px width for image --> needs 483px image
+
+Double-column grid housing photos is a little above 2000px
+    Further inspection (based on Firefox Dropdowns & responsive):
+        laptop with HiDPI,dpr2 544px width for photo x 2 --> needs 1088px
+        # needs 1360 with scaling
+        1080 standard monitor, dpr1 : 648.9px width for photo -- needs 648.9px 
+       
+ 
+Triple-Column grid (widest monitor it expands to),
+ Further inspection (based on Firefox Dropdowns & responsive):
+    2500px monitor, dpr1 , 578px width for image x 1 --> 578px image needed
+    # 867 with scaling
+    2034px monitor, dpr1, 451px  width for image x 1 --> 451px image needed 
+
+
+
+
+
+Working Compression Decisions: 
+ 1. I think given these images need to scale as well for hover, I will have the largest image be about 1400px in width 
+    because that accounts for the largest I saw with dpr2 plus added for hover (if I'm doing that math right), but I may have 1 size larger just to cover for certain?
+ 2. It seems like 900 pixels should cover both large phone with high dpr and large monitors with low dpr with scalling taken into consideration
+ 3. for standard monitors it seems with scaling you would need closer to 1000px
+ 4. Even though there is higher dpr, the images become so small that i'm not sure 800px is really needed, 
+ but I'm noticing I want to make them take up more width on smaller phones as well,(reading on that non-mdn site said showed something about parameters that accounted for screen sizing not just dpr as well, 
+ I'll have to review to see how I like that within what actually displays) which I think I can accomplish with flexible spacing.
+ but it was very difficult to get things to scale to the smallest width phones as is, so this one might be a decision I throw out.
+ 5. I dont think I'll account for grids on bigger screens because grid will grow and sizes will be at 1dpr so it should be covered by given widths. 
+
+
+
+Working Sizing Decisions: 
+maybe I could have the 1400px display for dpr2,  
+
+
+
+
+
+I'm going to have a higher and lower resolution for 1 column layout given the screen width varies widely within this format
+I think at the higher width ones there would be a likelihood of 1dpr but I might plan 
+for 1 2 and 3  dpr just in case
+perhaps I could account for the possibility of a wider width but it seems unlikely to be viewed on tv , so for 3 column I'll assume this is about max width at 1dpr
+2 columns also seem to be a high likelihood of 1dpr given that's about standard monitor size
+
+
+divs for grid (which picture takes up most of) are halfway between 6 and 7 hundred so to be safe,
+I'll compress to 700 for 3 grid layout
+
+
+
+
+
+
+
+TESTING EVIDENCE
+------------------------------------------
+
+
+
+Changes 
+--------------------
+I changed cushion from 2em to clamp variable, I'm still working on the clamps values though
