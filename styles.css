@@ -1,0 +1,535 @@
+@layer reset, base, layout, components, utilities, states;
+/* @import url('https://fonts.googleapis.com/css2?famiy=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
+
+@import url('https://fonts.googleapis.com/css2?family=Alice&family=Sacramento&display=swap');
+
+
+
+
+
+@layer reset {
+
+    html, body, div, span, applet, object, iframe,
+    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    a, abbr, acronym, address, big, cite, code,
+    del, dfn, em, img, ins, kbd, q, s, samp,
+    small, strike, strong, sub, sup, tt, var,
+    b, u, i, center,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, embed, 
+    figure, figcaption, footer, header, hgroup, 
+    menu, nav, output, ruby, section, summary,
+    time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+    }
+    /* HTML5 display-role reset for older browsers */
+    article, aside, details, figcaption, figure, 
+    footer, header, hgroup, menu, nav, section {
+        display: block;
+    }
+    body {
+        line-height: 1;
+    }
+    ol, ul {
+        list-style: none;
+    }
+    blockquote, q {
+        quotes: none;
+    }
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+        content: '';
+        content: none;
+    }
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+     *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+}
+/* TO DO  */
+
+
+
+@layer base{
+    :root
+    {
+        /* color vars */
+        --foundation:#102317;
+        --primary_color:#102F27;
+        --secondary_color:#4D674D;
+        --highlight:#D0F2DC;
+        --color_pop:#8A5F18;
+        --drk: #010604;
+        --details:#333333;
+        --light:#ffffff;
+
+        /* spacing vars */
+
+        --between: 2em;
+        /* I think this is dynamic spacing because it's based on the characters that are dynamically sized */
+        /* changed cushion to halve it as test */
+        --cushion: clamp(5px, 5%, 2rem);
+        --small_cush: clamp(5px, 5cqw, 10px);
+        --three_card_size: clamp(0px, 100%,40em);
+
+        /* shape var */
+
+        --rounding: 9px;
+
+        /* TEXT-VARS */
+
+        --body_font: Alice,"Book Antiqua", Baskerville, Palatino, Georgia , serif;
+       
+        --header_font: Sacramento,"Book Antiqua", serif;
+
+        /* These aren't that similar to chosen font but there's very little supported scripts, and docs said cursive isn't great alternative (I tried it out of curiosity and it gives me comic sans*/
+        --large-header: clamp(2.5rem,6cqw, 4rem);
+        --medium-header: clamp(2rem, 5cqw, 3.13rem);
+        
+        --small-header: clamp(1.75rem,4cqw, 2.5rem); 
+        --body-size:clamp(1rem,1rem + 1.5vw ,1.25rem);
+
+      /* For line height */
+        --body_spc:2;
+        --headght:1;
+        --shrink: 1.3;
+        --ft_spc: 1;
+
+    
+    }
+    
+    body{
+        background-color:var(--foundation);
+        block-size:100vh;
+        inline-size:100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap:var(--between);
+        justify-items: center;
+        color:var(--light);
+        color:var(--white);
+        font-family:var(--body_font);
+        font-size: var(--body-size);
+        line-height: var(--body_spc);
+        
+        
+
+    }
+
+    img{
+        display:block;
+        max-inline-size:100%;
+        min-inline-size: 0;
+        inline-size: auto;
+        block-size: auto;
+        object-fit: contain;
+        border-radius:var(--rounding);
+        align-self: center;
+        align-self: center;
+        justify-self: center;
+    }
+
+
+    a, footer p{
+        font-style: italic;  
+        color: inherit;
+    }
+
+    h1,h2,h3{
+        text-align: center;
+        font-family: var(--header_font);
+        padding-bottom:var(--small_cush);
+        line-height: var(--headght);
+        color:inherit;
+       
+    }
+    main > h2{
+        color:var(--highlight);
+    }
+
+    h1,h2{
+        font-size:var(--large-header);
+    }
+
+    
+    h3{
+        font-size:var(--medium-header);
+    }
+    h4{
+        font-family: var(--header_font);
+        font-size: var(--small-header);
+    }
+    
+
+}
+
+@layer layout{
+    header, main, footer{
+        padding:var(--cushion);
+        background:var(--primary_color);
+    }
+
+     footer, header{
+        color:var(--highlight);
+        inline-size:100%;
+    }
+
+    
+    
+    .flex_box{
+        display:flex;
+        flex-direction: row;
+        gap:var(--between);
+        flex-wrap: wrap;
+        justify-content: end;
+    } 
+    /* /* Formats a little differently than two class which is why it's specified here. */
+    .grid-one{
+        display: grid;
+        gap: var(--between);
+        grid-template-columns: repeat(1,minmax(0,1fr));
+     }
+     .one-card,.two-card,.three-card,.resume_card{
+        margin-block: var(--between);
+     }
+      header{
+        position:relative;
+        display:grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap:var(--between);
+        justify-content: space-between;
+        align-items: center;
+        overflow-wrap: wrap;
+    }
+
+    
+     @supports(container-type: inline-size){
+        main{
+            container-type: inline-size;
+        }
+        
+        /* everything up until this point functions pretty well on small screens naturally, so I decided to 
+        leave restructuring for bigger screens and  */
+        @container (inline-size > 50em){
+
+
+
+            .with-aside{
+                display:grid;
+                grid-template-columns: 4fr 1fr;
+                gap:var(--between);
+               
+                place-self: center; } 
+        
+            
+            /* changed grids back to being their own classes */
+          
+            .grid-two{
+                display:grid;
+                /* Ensures grid is 100% of it's parent width (section) which is 100% of main which is 90% of body or browser view */
+                inline-size:auto;
+                /* Changed from auto-fill because I mixed up which one collapses column track */
+                grid-template-columns: repeat(2, minmax(0, 1fr)); 
+                
+
+                /* Justifies grid-items in their track */
+                
+                place-self: center;
+                gap:var(--between);}
+
+            
+        
+            
+            
+            .grid-three{
+                display:grid;
+                /* Ensures grid is 100% of it's parent width (section) which is 100% of main which is 90% of body or browser view  */
+                inline-size:100%;
+                margin-inline: auto;
+                /* Changed from auto-fill because I mixed up which one collapses column track */
+                grid-template-columns: repeat(auto-fit,minmax(min(25em,100%), 1fr));
+                /* Justifies grid-items in their track */
+                justify-items: center;
+                justify-content: center;
+                gap:var(--between);
+                max-block-size: 100%;
+                padding:var(--cushion); }
+
+            
+        }
+     }
+
+   
+    
+
+   
+    
+
+    main {
+        inline-size:90%;
+        margin:auto;
+        container-type: inline-size;
+
+    }
+     
+        
+    
+    footer {
+        
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        line-height: var(--ft_spc);
+        font-size: clamp(small,1vw,20px);
+    }
+    
+
+     
+}
+
+
+
+@layer components{
+    
+    
+    section, .three-card,.one-card,.resume_card{
+        border-radius: var(--rounding);
+    }
+    section,.two-card,.resume_card{
+        padding:var(--cushion);
+    }
+
+    .one-card,.two-card,.three-card,.resume_card{
+        background: var(--highlight);
+       color: var(--drk);
+
+    }   
+
+    input, textarea, label,nav li{
+        border-radius: var(--rounding);
+    }
+    
+    input, textarea {
+        padding:var(--cushion);
+    }
+
+    .two-card,.three-card,.col_one,.col_two{
+        display: grid;
+        grid-template-rows: subgrid;
+    }
+
+
+    
+    .col_one, .col_two{
+        gap:var(--between);
+        justify-content: center;
+        grid-row: span 3;
+
+    }
+    section{
+        border: 3px solid var(--color_pop);
+        background-color: var(--secondary_color);
+        color:var(--light);
+       
+    }
+
+
+    .three-card{
+        /* Changed width variables to fit into container */
+       padding:clamp(0px,var(1%),var(2rem));
+       padding:5%;
+       /* changed cards into subgrid to respect alignment with sibling cards */
+    
+       inline-size: var(--three_card_size);
+       place-self: center;
+       display:grid;
+       grid-template-rows: subgrid;
+       grid-row: span 3;
+       gap:var(--between);
+       
+    }
+
+
+    .two-card{
+        /* made this class because home cards need to fill available width
+        and span 2 columns/
+       /* changed cards into subgrid to respect alignment with sibling cards */
+        gap:1em;
+        /* breaking space convention here because the first card is a bit bare without it */
+        grid-row:span 2;
+       
+        
+        min-inline-size: 0;
+        margin:0;
+        max-inline-size: auto;
+    }
+
+    /* I wanted the heading to be aligned center when viewport shrunk and paragraph to be aligned start */
+    .two-card >  :first-child{
+        align-self: center;
+    }
+   
+
+    
+    .card-shell{
+        container-type: inline-size;
+        container-name:card_dependency;
+    } 
+
+    .contact-card picture{
+        inline-size: 300px;
+        border-radius: 200px;
+    }
+    
+
+    
+    nav li{
+        padding:var(--small_cush);
+        outline: 3px solid var(--secondary_color);
+        display: inline;
+    }
+    nav a{
+        color:var(--light);
+        font-style: normal;
+        text-decoration: none;
+        text-transform: uppercase;
+        background-color: var(--secondary_color);
+        padding:10px;
+        border-radius: var(--rounding);
+    }
+   
+    
+    
+    form{
+        display:grid;
+        gap:var(--between);
+        justify-content: center;
+    }
+    input,textarea, label{
+        inline-size: 100%;
+        border:none;
+    }
+
+    .eyebrow{
+        font-style: italic;
+        color:var(--details);
+    }
+    
+    
+
+    input[type="submit"]{
+        font-size: large;
+        font-weight: bold;
+        font-family: inherit;
+    }
+    @supports(container-type: inline-size){
+        @container card_dependency (inline-size > 20em){
+            .contact-card{
+                display:grid;
+                grid-template-columns: repeat(auto-fit, minmax(15em,25em));
+                inline-size:100%;
+                place-self: center;
+                gap:var(--between);
+                align-items: center;
+                justify-items: center;
+                justify-content: center;
+
+            } 
+        }
+
+    }
+    
+    
+    
+  }
+
+
+@layer utilities{
+    .hero{
+        grid-column: 1/-1;
+        color:var(--light);
+    }
+    .text-center{
+        text-align: center;
+    }
+    .shrink-ln{
+        line-height: var(--shrink);
+    }
+    .hidden{
+        display:none;
+    }
+    
+}
+
+
+    
+@layer states{
+    /* hover */
+    
+    .button:hover{
+        background-color: var(--color_pop);
+        color:var(--light);
+        font-family: inherit;
+    }
+    
+    img:hover{
+        transform: scale(1.5,1.5);
+    }
+     
+    /* focus */
+    
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible{
+    outline: 3px solid var(--color_pop);
+    }
+    
+    /* active and link focus */
+    a[aria-current="page"],a:active,a:focus-visible {
+        padding:10px ;
+        border-radius: var(--rounding) ;
+        background-color: var(--primary_color);    
+        outline: none;
+        border:none;
+    }
+
+ 
+   
+}
+
+   
+@media (prefers-color-scheme: light){
+    body{
+        background-color: var(--highlight);
+    }
+    header,main,footer{
+    background: var(--secondary_color);
+}
+   
+    main,section,nav li{
+        border: 3px solid var(--foundation);
+        border-radius: var(--rounding);
+        box-shadow: 0px 0px 15px 5px var(--primary_color);
+    }
+}
+
+
+
+
+@media print{
+    header,footer,nav{
+        display:none;
+    }
+}
