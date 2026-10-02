@@ -262,7 +262,7 @@
                 inline-size:100%;
                 margin-inline: auto;
                 /* Changed from auto-fill because I mixed up which one collapses column track */
-                grid-template-columns: repeat(auto-fit,minmax(min(25,100%), 1fr));
+                grid-template-columns: repeat(auto-fit,minmax(min(25em,100%), 1fr));
                 /* Justifies grid-items in their track */
                 justify-items: center;
                 justify-content: center;
