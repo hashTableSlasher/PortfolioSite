@@ -1,29 +1,7 @@
 @layer reset, base, layout, components, utilities, states;
 
-@font-face {
-    font-display:auto;
-    font-family: 'alice';
-    src: local('alice'),
-         url('assets/fonts/alice-regular-webfont.woff2') format('woff2'),
-        url('assets/fonts/alice-regular-webfont.woff') format('woff');
-         
-    font-weight: normal;
-    font-style: normal;
-
-}
 
 
-
-
-@font-face {
-    font-display:auto;
-    font-family: 'sacramento';
-    src: local('sacramento')
-        url('assets/fonts/sacramento-regular-webfont.woff2') format('woff2'),
-        url('assets/fonts/sacramento-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
 
 
 
@@ -101,9 +79,9 @@
         --between: 2em;
         /* I think this is dynamic spacing because it's based on the characters that are dynamically sized */
         /* changed cushion to halve it as test */
-        --cushion: clamp(5px, 5%, 2rem);
+        --cushion: clamp(16px, 2vw, 20px);
         --small_cush: clamp(5px, 5cqw, 10px);
-        --three_card_size: clamp(200px, 100%,40em);
+        /* --three_card_size: clamp(200px, 100%,40em); */
 
         /* shape var */
 
@@ -251,7 +229,7 @@
                 display:grid;
                 grid-template-columns: 4fr 1fr;
                 gap:var(--between);
-               
+
                 place-self: center; } 
         
             
@@ -266,9 +244,12 @@
                 
 
                 /* Justifies grid-items in their track */
-                
+                justify-content: space-between; 
                 place-self: center;
-                gap:var(--between);}
+                max-block-size: 100%;
+                gap:var(--between);
+                padding:var(--cushion);
+            }
 
             
         
@@ -285,8 +266,12 @@
                 justify-items: center;
                 justify-content: center;
                 gap:var(--between);
-                max-block-size: 100%;
+                block-size: 100%;
                 padding:var(--cushion); }
+            
+             .one-card,.two-card,.three-card,.resume_card{
+                    margin-block: 0;
+                }
 
             
         }
@@ -300,6 +285,7 @@
 
     main {
         inline-size:90%;
+        
         margin:auto;
         container-type: inline-size;
 
@@ -375,8 +361,8 @@
     
        inline-size: var(--three_card_size);
        place-self: center;
-       display:grid;
-       grid-template-rows: subgrid;
+       /* display:grid;
+       grid-template-rows: subgrid; */
        grid-row: span 3;
        gap:var(--between);
        
@@ -388,13 +374,13 @@
         and span 2 columns/
        /* changed cards into subgrid to respect alignment with sibling cards */
         gap:1em;
+        /* display:grid;
+        grid-template-rows: subgrid; */
         /* breaking space convention here because the first card is a bit bare without it */
         grid-row:span 2;
-       
-        
         min-inline-size: 0;
-        /* margin:0; */
-        max-inline-size: auto;
+        max-inline-size: 100%;
+        inline-size: auto;
     }
 
     /* I wanted the heading to be aligned center when viewport shrunk and paragraph to be aligned start */
@@ -409,11 +395,11 @@
         container-name:card_dependency;
     } 
 
-    /* .contact-card picture { */
-        /* inline-size: 300px;
-        border-radius: 200px;
+    .contact-card picture , .contact-card img{ 
+         inline-size: 300px;
+        border-radius: 50%;
     }
-     */
+    
 
     
     nav li{
@@ -462,7 +448,7 @@
                 grid-template-columns: repeat(auto-fit, minmax(15em,25em));
                 inline-size:100%;
                 place-self: center;
-                gap:var(--between);
+                /* gap:var(--between); */
                 align-items: center;
                 justify-items: center;
                 justify-content: center;
