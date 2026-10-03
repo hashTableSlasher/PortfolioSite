@@ -76,7 +76,7 @@
 
         /* spacing vars */
 
-        --between: 2em;
+        --between: 1em;
         --cushion:clamp(.5rem,2vw,1.6rem);
         /* I think this is dynamic spacing because it's based on the characters that are dynamically sized */
         /* changed cushion to halve it as test */
