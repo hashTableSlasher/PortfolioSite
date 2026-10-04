@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>The obvious hire</title>
+        <title>Contact Page</title>
         <link rel="stylesheet" href="styles.css">
         <link rel="preload" href="assets/fonts/alice-regular-webfont.woff2" as="font" type="font/woff2" crossorigin="anonymous">
         <link rel="preload" href="assets/fonts/sacramento-regular-webfont.woff2" as="font" type="font/woff2" crossorigin="anonymous">
@@ -63,12 +63,12 @@
                         <div>
                             <picture aria-hidden="true">
                                 <source
-                                media="(width > 1375px)" srcset="assets\profile_card_pic.jpg" width="300px" height="358px"
+                                media="(width > 1375px)" srcset="assets/profile_card_pic.jpg" width="300" height="358"
                                 >
                                 <source
-                                media="(width <= 1375px)" srcset="assets\profile_card_pic_crop.jpg " width = "300px" height="251px"
+                                media="(width <= 1375px)" srcset="assets/profile_card_pic_crop.jpg " width = "300" height="251"
                                 >
-                                <img src="assets\profile_card_pic_crop.png" alt="">
+                                <img src="assets/profile_card_pic_crop.png" alt="">
                             </picture>
                         </div>
                          <div>
@@ -84,31 +84,41 @@
             
             <section>
                 <h3>Contact Form</h3>
-                <div>
-                    <form method="POST" class="one">
-                        <div>
-                            <label for="name">Name</label>
-                            <input type="text" name="name" id="name">
-                        </div>
-                        <div>
-                            <label for="email">Email Address</label>
-                            <input type="text" name="email" id="email">
-                        </div>
-                        <div>
-                            <label for="company">Company Name (if applicable)</label>
-                            <input type="text" name="company" id="company">
-                        </div>
-                        <div>
-                            <label for="Industry">Industry</label>
-                            <input type="text" name="Industry" id="Industry">
-                        </div>
-                        <div>
-                            <label for="help">Let me know what's on your mind</label>
-                            <textarea name="help" id="help"></textarea>
-                        </div>
-                        <div>
-                            <input class="button" type="submit" name="submit" id="submit">
-                        </div>
+                <div class="grid-one">
+                    <p class="text-center">Fields marked with an asterisk (*) are required.</p>
+                    <form method="POST" >
+                        <fieldset>
+                            <div class="errors hidden" role="alert" aria-relevant="all">
+                                <ul>
+                                    <li class="required">Name is required</li>
+                                    <li class="required">Email is required</li>
+                                    <li class="required">Reason is required</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <label for="name">Name *</label>
+                                <input type="text" name="name" id="name" aria-required="true" placeholder="firstName lastName">
+                            </div>
+                            <div>
+                                <label for="email">Email Address *</label>
+                                <input type="text" name="email" id="email" aria-required="true" placeholder="someone@companyname.com">
+                            </div>
+                            <div>
+                                <label for="company">Company Name (if applicable)</label>
+                                <input type="text" name="company" id="company" placeholder="Phoenix Web Design inc." >
+                            </div>
+                            <div>
+                                <label for="Industry">Industry (if applicable)</label>
+                                <input type="text" name="Industry" id="Industry" placeholder="Web Design" >
+                            </div>
+                            <div>
+                                <label for="reason">Let me know what's on your mind *</label>
+                                <textarea name="reason" id="reason" aria-required="true" placeholder="I'd like to inquire about Web Design service"></textarea>
+                            </div>
+                            <div>
+                                <input type="submit" class="button" name="submit" id="submit">
+                            </div>
+                        </fieldset>
                     </form>
                 </div>
             </section>

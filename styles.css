@@ -74,6 +74,11 @@
         --drk: #010604;
         --details:#333333;
         --light:#ffffff;
+        --alert:#9d0a14;
+        --reduce_light:#c0c0c0;
+        --reduce_secondary:#6b836b;
+        --reduce_secondarytwo:#506250;
+        --reduce_secondarythree:#343f34;
 
         /* spacing vars */
 
@@ -428,6 +433,8 @@
     input,textarea, label{
         inline-size: 100%;
         border:none;
+        font-size:1.5rem;
+        
     }
 
     .eyebrow{
@@ -435,13 +442,35 @@
         color:var(--details);
     }
     
-    
-
     input[type="submit"]{
-        font-size: large;
+        font-size: 1.25rem;
         font-weight: bold;
         font-family: inherit;
     }
+    input,textarea{
+        font-size: 1rem;
+        font-weight: normal;
+    }
+  
+    label{
+        line-height: 3;
+    }
+    .errors{
+        color:var(--alert);
+        background-color: var(--highlight);
+        border-radius: var(--rounding);
+        padding: var(--small_cush) var(--cushion);
+        
+    }
+    .errors ul{
+        list-style-type: disc;
+        font-size: 1.25rem;
+        background-color: var(--highlight);
+        color:var(--alert);
+        padding: var(--small_cush);
+        line-height: 1.5;
+    }
+    
     @supports(container-type: inline-size){
         @container card_dependency (inline-size > 20em){
             .contact-card{
@@ -479,6 +508,7 @@
         display:none;
     }
     
+    
 }
 
 
@@ -501,7 +531,7 @@
     input:focus-visible,
     select:focus-visible,
     textarea:focus-visible{
-    outline: 3px solid var(--color_pop);
+    outline: 5px solid var(--color_pop);
     }
     
     /* active and link focus */
@@ -533,7 +563,55 @@
     }
 }
 
+@media(prefers-contrast: more){
+    section{
+        background-color: #102317;
+    }
+    .three-card,.two-card{
+        background-color: var(--highlight);
+    }
+    input::placeholder{
+        color:var(--details);
+    }
+    
 
+}
+
+@media(prefers-contrast: less){
+    body,section,header,footer, nav a{color:var(--drk);
+    }
+    body{
+        background-color: var(--reduce_secondary);
+    }
+    main,header, footer{
+        background-color: var(--reduce_secondarytwo);
+    }           
+   
+    section,.two-card{
+        background-color: var(--reduce_secondary);
+    }
+    
+    section,nav li{
+        border: 5px solid var(--reduce_secondarythree);
+    }
+    nav a[aria-current="page"],input,textarea{
+        background-color:var(--reduce_light);
+    }
+    nav a {
+        background-color: var(--reduce_secondarytwo);
+    }
+    nav a:focus{
+        border:var(--reduce_light) 5px solid;
+        background-color: var(--reduce_light);
+    }
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible  {
+    outline: 5px solid var(--details);
+    }
+    
+
+}
 
 
 @media print{
