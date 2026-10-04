@@ -564,15 +564,34 @@
 }
 
 @media(prefers-contrast: more){
-    section{
-        background-color: #102317;
+    section,.two-card,.three-card,input[type="submit"], a,footer, header{
+        background-color: var(--foundation);
+        border:solid 3px yellow;
+        color:yellow
     }
-    .three-card,.two-card{
-        background-color: var(--highlight);
+    
+
+    label,body,section,form,h1,h2,h3,h4,form, input[type="submit"],.two-card,.three-card,div{
+        color:yellow;
+        background-color: var(--foundation);
     }
-    input::placeholder{
+   
+    
+    input::placeholder,textarea::placeholder{
         color:var(--details);
     }
+    nav li{
+        border: solid 3px yellow;
+    }
+    a[aria-current="page"],a:active,a:focus-visible {
+        background-color: red;
+    }
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible{
+    outline: 5px solid red;
+    }
+    
     
 
 }
