@@ -376,7 +376,7 @@
        /* changed cards into subgrid to respect alignment with sibling cards */
        inline-size: 100%;
        place-self: center;
-       grid-row: span 3;
+       grid-row: span 2;
        gap:var(--between);
        
     }
