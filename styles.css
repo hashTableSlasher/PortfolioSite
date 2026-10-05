@@ -100,12 +100,14 @@
         --header_font: 'sacramento',"Book Antiqua", serif, system-ui;
 
         /* These aren't that similar to chosen font but there's very little supported scripts, and docs said cursive isn't great alternative (I tried it out of curiosity and it gives me comic sans*/
-        --large-header: clamp(2.5rem,7cqw, 4rem);
+        --largest-header: clamp(2.5rem,7cqw, 4rem);
+        --large-header:clamp(2.25rem,6.5cqw,3.8rem);
+
         --medium-header: clamp(2rem, 6cqw, 3.13rem);
         
         --small-header: clamp(1.75rem, 5cqw, 2.5rem); 
         --body-size:clamp(1rem, 1.5cqw ,1.25rem);
-        --footer-size: clamp(.75rem, 1cqw, 1.25rem);
+        --footer-size: clamp(1rem, 1cqw, 1.25rem);
 
       /* For line height */
         --body_spc:2;
@@ -162,6 +164,8 @@
     }
     main > h2{
         color:var(--highlight);
+    }
+    h1{font-size: var(--largest-header);
     }
 
     h1,h2{
@@ -352,6 +356,10 @@
         gap:var(--between);
         justify-content: center;
         grid-row: span 3;
+
+    }
+    .col_two a{
+        font-style: italic;
 
     }
     section{
