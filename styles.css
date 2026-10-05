@@ -100,7 +100,7 @@
         --header_font: 'sacramento',"Book Antiqua", serif, system-ui;
 
         /* These aren't that similar to chosen font but there's very little supported scripts, and docs said cursive isn't great alternative (I tried it out of curiosity and it gives me comic sans*/
-        --largest-header: clamp(3rem,8cqw, 5rem);
+        --largest-header: clamp(3rem,12cqw, 6rem);
         --large-header:clamp(2.25rem,6.5cqw,4rem);
 
         --medium-header: clamp(2rem, 6cqw, 3.13rem);
