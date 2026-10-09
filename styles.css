@@ -83,10 +83,13 @@
         /* spacing vars */
 
         --between: 2em;
-        --cushion:clamp(.5rem,2vw,1.6rem);
+        
+        --cushion:clamp(1rem,2vw,1.6rem);
+        --imagecush:clamp(.5rem,2vw,1.6rem);
+        
         /* I think this is dynamic spacing because it's based on the characters that are dynamically sized */
         /* changed cushion to halve it as test */
-        --small_cush: clamp(.3rem, 0.5cqw, .6rem);
+        --small_cush: clamp(.8rem, 1vw, .7rem);
         /* --three_card_size: clamp(200px, 100%,40em); */
 
         /* shape var */
@@ -100,14 +103,19 @@
         --header_font: 'sacramento',"Book Antiqua", serif, system-ui;
 
         /* These aren't that similar to chosen font but there's very little supported scripts, and docs said cursive isn't great alternative (I tried it out of curiosity and it gives me comic sans*/
-        --largest-header: clamp(3rem,12cqw, 6rem);
-        --large-header:clamp(2.25rem,6.5cqw,4rem);
+        --largest-header: clamp(4.5rem, 4vw, 6.25rem);
+        --large-header: clamp(4rem, 3.5vw, 5.3rem);
+        /* --large-header:3.5vw; */
 
-        --medium-header: clamp(2rem, 6cqw, 3.13rem);
-        
-        --small-header: clamp(1.75rem, 5cqw, 2.5rem); 
-        --body-size:clamp(1rem, 1.5cqw ,1.25rem);
-        --footer-size: clamp(1rem, 1cqw, 1.25rem);
+        --medium-header: clamp(3.5rem, 3vw, 4rem);
+        /* at least 2.5rem */
+        /* max 3.3rem */
+        --small-header: clamp(3rem, 2.5vw, 3.5rem);
+        /* --body-size:1.4vw; */
+        --body-size:clamp(1.25rem,1.5vw,1.56rem);
+    
+
+       
 
       /* For line height */
         --body_spc:2;
@@ -130,7 +138,7 @@
         color:var(--white);
         font-family:var(--body_font);
         font-size: var(--body-size);
-        line-height: var(--body_spc);
+        line-height: 2;
         
         
 
@@ -211,8 +219,9 @@
         gap: var(--between);
         grid-template-columns: repeat(1,minmax(0,1fr));
      }
-     .one-card,.two-card,.three-card,.resume_card{
+     .one-card,.two-card,.three-card,.col_one,.col_two {
         margin-block: var(--between);
+        border-radius: var(--rounding);
      }
       header{
         position:relative;
@@ -239,9 +248,13 @@
             .with-aside{
                 display:grid;
                 grid-template-columns: 4fr 1fr;
+                
                 gap:var(--between);
-
-                place-self: center; } 
+                align-items: stretch;
+                justify-items: stretch; 
+                justify-content: stretch;
+                align-content: stretch;
+            } 
         
             
             /* changed grids back to being their own classes */
@@ -255,9 +268,9 @@
                 
 
                 /* Justifies grid-items in their track */
-                justify-content: space-between; 
-                place-self: center;
-                max-block-size: 100%;
+                justify-content:space-around; 
+                
+                /* max-block-size: 100%; */
                 gap:var(--between);
                 padding:var(--cushion);
             }
@@ -278,11 +291,11 @@
                 justify-content: center;
                 gap:var(--between);
                 max-block-size: 100%;
-                padding:var(--cushion); }
+                padding:var(--imagecush); }
 
            
             
-             .one-card,.two-card,.three-card,.resume_card{
+             .one-card,.two-card,.three-card,.resume_card,.col_one,.col_two{
                     margin-block: 0;
                 }
 
@@ -300,7 +313,6 @@
         inline-size:90%;
         
         margin:auto;
-        container-type: inline-size;
 
     }
      
@@ -312,7 +324,6 @@
         justify-content: center;
         align-content: center;
         line-height: var(--ft_spc);
-        font-size: var(--footer-size);
     }
     
 
@@ -324,14 +335,14 @@
 @layer components{
     
     
-    section, .three-card,.one-card,.resume_card{
+    section, .three-card,.one-card,.resume_card,.site-card{
         border-radius: var(--rounding);
     }
-    section,.two-card,.resume_card{
+    section,.two-card,.resume_card,.site-card{
         padding:var(--cushion);
     }
 
-    .one-card,.two-card,.three-card,.resume_card{
+    .one-card,.two-card,.three-card,.resume_card,.site-card{
         background: var(--highlight);
        color: var(--drk);
 
@@ -350,7 +361,7 @@
         grid-template-rows: subgrid;
     }
 
-
+    
     
     .col_one, .col_two{
         gap:var(--between);
@@ -358,6 +369,7 @@
         grid-row: span 3;
 
     }
+
     .col_two a{
         font-style: italic;
 
@@ -372,13 +384,13 @@
 
     .three-card{
         /* Changed width variables to fit into container */
-       padding: var(--cushion);
+       padding: var(--imagecush);
        /* changed cards into subgrid to respect alignment with sibling cards */
        inline-size: 100%;
        place-self: center;
        grid-row: span 2;
        justify-content: end;
-       align-items: end;
+       align-items: start;
        gap:var(--between);
        
     }
@@ -397,6 +409,12 @@
         min-inline-size: 0;
         max-inline-size: 100%;
         inline-size: auto;
+        
+    }
+    .resume_card{
+        /* max-inline-size: 100%;
+        min-inline-size: 11.2em;
+        inline-size: 100%; */
     }
 
     /* I wanted the heading to be aligned center when viewport shrunk and paragraph to be aligned start */
@@ -408,7 +426,7 @@
     
     .card-shell{
         container-type: inline-size;
-        container-name:card_dependency;
+        container-name: card_dependency;
     } 
 
     .contact-card picture , .contact-card img{ 
@@ -416,21 +434,16 @@
         border-radius: 50%;
     }
     
-
-    
-    nav li{
-        padding:var(--small_cush);
-        outline: 3px solid var(--secondary_color);
-        display: inline;
-    }
     nav a{
+        display:inline;
         color:var(--light);
         font-style: normal;
         text-decoration: none;
+        padding:var(--small_cush);
         text-transform: uppercase;
         background-color: var(--secondary_color);
-        padding:10px;
         border-radius: var(--rounding);
+        
     }
    
     
@@ -526,12 +539,14 @@
 @layer states{
     /* hover */
     
-    .button:hover{
+    input[type="submit"]:hover, input[type="submit"]:active,input[type="submit"]:focus-visible{
         background-color: var(--color_pop);
         color:var(--light);
         font-family: inherit;
+        transform:scale(1.1);
+        font-size:larger;
     }
-    
+     
     img:hover{
         transform: scale(1.5,1.5);
     }
@@ -545,13 +560,30 @@
     }
     
     /* active and link focus */
-    a[aria-current="page"],a:active,a:focus-visible {
-        padding:10px ;
-        border-radius: var(--rounding) ;
-        background-color: var(--primary_color);    
-        outline: none;
-        border:none;
+     a[aria-current="page"]{
+        background-color:var(--color_pop);
     }
+    li:hover,li:has(a:focus), li:has(a:active){
+        transform: scale(1.2);
+    }
+   
+    main a:active,
+    footer a:active,  
+    main a:hover,
+    footer a:hover,
+    main a:focus-visible, 
+    footer a:focus-visible{
+        padding:5px 10px;
+        border-radius: var(--rounding);
+        box-shadow: 0px 0px 11px 5px var(--color_pop); 
+        outline: none;
+       
+
+    }
+     nav a:active,nav a:focus-visible,nav a:hover{
+        outline: none;
+        background-color: var(--color_pop);
+    } 
 
  
    
@@ -587,10 +619,7 @@
     }
    
     
-    input::placeholder,textarea::placeholder{
-        color:var(--details);
-        font:arial;
-    }
+   
     nav li{
         border: solid 3px yellow;
     }

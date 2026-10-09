@@ -88,19 +88,20 @@
                     </div>
             </section>
             
-            <section>
+            <section id="cnct">
                 <h3>Contact Form</h3>
                 <div class="grid-one">
                     <p class="text-center">Fields marked with an asterisk (*) are required.</p>
-                    <form method="POST" >
+                    <div class="errors hidden" role="alert" aria-relevant="all">
+                        <ul>
+                            <li class="required">Name is required</li>
+                            <li class="required">Email is required</li>
+                            <li class="required">Reason is required</li>
+                        </ul>
+                    </div>
+                    <form method="GET">
                         <fieldset>
-                            <div class="errors hidden" role="alert" aria-relevant="all">
-                                <ul>
-                                    <li class="required">Name is required</li>
-                                    <li class="required">Email is required</li>
-                                    <li class="required">Reason is required</li>
-                                </ul>
-                            </div>
+                            
                             <div>
                                 <label for="name">Name *</label>
                                 <input type="text" name="name" id="name" aria-required="true" placeholder="firstName lastName">
@@ -135,7 +136,7 @@
                 Not all content/styles have been added or finalized. This is a working project
             </p>
             <p>
-               You can contact me via lmmena@asu.edu or fill out the form on my contact page
+               You can contact me via lmmena@asu.edu or fill out the <a href="#cnct">form</a> on my contact page
             </p>
         </footer>
 
