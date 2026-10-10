@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <title>A place to get in touch with me, an aspiring web designer</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Lilly Mena">
         <meta name="description" content="A place to touch base with me and get more insight on what it is you’re interested in.">
         <link rel="preload" href="assets/fonts/alice-regular-webfont.woff2" as="font" type="font/woff2" crossorigin="anonymous">
         <link rel="preload" href="assets/fonts/sacramento-regular-webfont.woff2" as="font" type="font/woff2" crossorigin="anonymous">
@@ -64,15 +65,15 @@
         <main class="grid-one">
             <div class="hero text-center"><h2>Contact</h2></div>
             <section class="card-shell">
-                    <div class="contact-card">
+                    <div class="contact-card" id="contact-card">
                         <h3 class="hero">Profile Card</h3>
                         <div>
                             <picture aria-hidden="true">
                                 <source
-                                media="(width > 1375px)" srcset="assets/profile_card_pic.jpg" width="300" height="358"
+                                media="(width > 1375px)" srcset="assets/profile_card_pic.jpg" id="long" width="300" height="358"
                                 >
                                 <source
-                                media="(width <= 1375px)" srcset="assets/profile_card_pic_crop.jpg " width = "300" height="251"
+                                media="(width <= 1375px)" srcset="assets/profile_card_pic_crop.jpg " id="crop" width = "300" height="251"
                                 >
                                 <img src="assets/profile_card_pic_crop.jpg" alt="">
                             </picture>
@@ -120,7 +121,7 @@
                             </div>
                             <div>
                                 <label for="reason">Let me know what's on your mind *</label>
-                                <textarea name="reason" id="reason" aria-required="true" placeholder="I'd like to inquire about Web Design service"></textarea>
+                                <textarea name="reason" id="reason" aria-required="true" placeholder="I'd like to inquire about Web Design service" rows="5"></textarea>
                             </div>
                             <div>
                                 <input type="submit" class="button" name="submit" id="submit">

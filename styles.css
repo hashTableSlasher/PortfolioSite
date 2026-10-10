@@ -1,6 +1,8 @@
 @layer reset, base, layout, components, utilities, states;
 
+/* @import url(assets/fonts/alice-regular-webfont.woff2);
 
+@import url(assets/fonts/sacramento-regular-webfont.woff2); */
 
 
 
@@ -98,9 +100,9 @@
 
         /* TEXT-VARS */
 
-        --body_font: 'alice',"Book Antiqua", Baskerville, Palatino, Georgia , serif,  system-ui ;
+        --body_font: 'alice', Baskerville, Palatino, Georgia , serif;
        
-        --header_font: 'sacramento',"Book Antiqua", serif, system-ui;
+        --header_font: 'sacramento', serif;
 
         /* These aren't that similar to chosen font but there's very little supported scripts, and docs said cursive isn't great alternative (I tried it out of curiosity and it gives me comic sans*/
         --largest-header: clamp(4.5rem, 4vw, 6.25rem);
@@ -141,20 +143,27 @@
         line-height: 2;
         
         
+        
 
     }
 
     img{
-        display:block;
+        inline-size:100%;
+        width:100%;
         max-inline-size:100%;
-        min-inline-size: 0;
-        inline-size: auto;
+        height:auto;
+        aspect-ratio: 4/3;
+        block-size: auto; 
         object-fit: contain;
         border-radius:var(--rounding);
         align-self: center;
         align-self: center;
         justify-self: center;
     }
+    
+    
+
+   
 
 
     a, footer p{
@@ -285,8 +294,9 @@
                 inline-size:100%;
                 margin-inline: auto;
                 /* Changed from auto-fill because I mixed up which one collapses column track */
-                grid-template-columns: repeat(auto-fit,minmax(min(25em,100%), 1fr));
+                grid-template-columns: repeat(auto-fit,minmax(min(300px,100%), 1fr));
                 /* Justifies grid-items in their track */
+                max-inline-size: 100%;
                 justify-items: center;
                 justify-content: center;
                 gap:var(--between);
@@ -298,6 +308,7 @@
              .one-card,.two-card,.three-card,.resume_card,.col_one,.col_two{
                     margin-block: 0;
                 }
+             
 
             
         }
@@ -330,11 +341,28 @@
      
 }
 
-
+    
 
 @layer components{
+    .contact-card picture{
+        display:block;
+        
+        border-radius: 50%;
+        inline-size: 100%;
+        /* object-fit: contain; */
+        
+    }
+    .contact-card picture img{
+        border-radius: 50%;
+        inline-size: 100%;
+        block-size: 100%;
+        aspect-ratio: 6/5;
+        
+    }
+   
     
-    
+   
+
     section, .three-card,.one-card,.resume_card,.site-card{
         border-radius: var(--rounding);
     }
@@ -347,6 +375,7 @@
        color: var(--drk);
 
     }   
+   
 
     input, textarea, label,nav li{
         border-radius: var(--rounding);
@@ -396,14 +425,11 @@
     }
     
 
-
     .two-card{
         /* made this class because home cards need to fill available width
         and span 2 columns/
        /* changed cards into subgrid to respect alignment with sibling cards */
         gap:1em;
-        /* display:grid;
-        grid-template-rows: subgrid; */
         /* breaking space convention here because the first card is a bit bare without it */
         grid-row:span 2;
         min-inline-size: 0;
@@ -411,12 +437,7 @@
         inline-size: auto;
         
     }
-    .resume_card{
-        /* max-inline-size: 100%;
-        min-inline-size: 11.2em;
-        inline-size: 100%; */
-    }
-
+   
     /* I wanted the heading to be aligned center when viewport shrunk and paragraph to be aligned start */
     .two-card >  :first-child{
         align-self: center;
@@ -428,12 +449,9 @@
         container-type: inline-size;
         container-name: card_dependency;
     } 
-
-    .contact-card picture , .contact-card img{ 
-         inline-size: 300px;
-        border-radius: 50%;
-    }
     
+    
+
     nav a{
         display:inline;
         color:var(--light);
@@ -456,7 +474,7 @@
     input,textarea, label{
         inline-size: 100%;
         border:none;
-        font-size:1.5rem;
+        
         
     }
 
@@ -466,18 +484,19 @@
     }
     
     input[type="submit"]{
-        font-size: 1.25rem;
+        font-size: var(--body-size);
         font-weight: bold;
         font-family: inherit;
     }
-    input,textarea{
-        font-size: 1rem;
+    input:placeholder-shown{
+        font-size: medium;
         font-weight: normal;
     }
-  
-    label{
-        line-height: 3;
+    textarea:placeholder-shown{
+        font-Size: larger;
     }
+
+
     .errors{
         color:var(--alert);
         background-color: var(--highlight);
@@ -487,11 +506,11 @@
     }
     .errors ul{
         list-style-type: disc;
-        font-size: 1.25rem;
+        font-size: var(--body-size);
         background-color: var(--highlight);
         color:var(--alert);
         padding: var(--small_cush);
-        line-height: 1.5;
+        
     }
     
     @supports(container-type: inline-size){
@@ -501,12 +520,16 @@
                 grid-template-columns: repeat(auto-fit, minmax(15em,25em));
                 inline-size:100%;
                 place-self: center;
-                /* gap:var(--between); */
                 align-items: center;
                 justify-items: center;
                 justify-content: center;
-
+                max-inline-size: 100%;
+                
             } 
+            .contact-card picture img{
+                aspect-ratio: 16/19;
+             }
+
         }
 
     }
