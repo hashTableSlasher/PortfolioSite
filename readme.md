@@ -55,11 +55,13 @@ but there are some things I'd still like to tweak. I'd like to work on on the ed
 Font-fallback: I still need to reorder or change values in font-fallback to be compliant with Firefox's 
 ordering system for fonts. Specifically it says that "Book Antiqua" is in the wrong place. I'd like to use that above system default fonts but I know there's sometimes better performance for that on older browsers.
 
+Planning 
+---------
+Most content, etc is going to remain the same, I'd just like to polish up what's already there to the best of my ability. 
 
 
 
-
-Release Evidence:
+Release Evidence/Tests:
 --------------------
 TESTS: 
 Performance:
@@ -86,7 +88,7 @@ Accessibility:
 -proper war-aria use in errors for form according to MDN specifications. 
 
 Performance: 
-- I wasn't passing for a while because I  didn't give aspect ratio to images, for some reason it wouldn't pass audit inspection unless aspect ratio was in globals (I tried taking it out, doing component specific imgs , and tried several variations on selectors), (it passed picture element in contact because you can give height directly with that syntax). But I got it to pass all inspections.
+- I wasn't passing for a while because I  didn't give aspect ratio to images, for some reason it wouldn't pass audit inspection unless aspect ratio was in globals (I tried taking it out, doing component specific imgs , and tried several variations on selectors, and even tried creating a different css file), (it passed picture element in contact because you can give height directly with that syntax). But I got it to pass all inspections.
 
 
 Browser Support: 
@@ -101,19 +103,28 @@ Metadata and discoverability:
 Release Quality: 
 - There is good clear user feedback when tabbing, hovering over and activating interactive elements on the page.
 
-
-
-
-
-Release Evidence 
----------------------
-
 Accessibility spot checks: 
+
 - I again looked over alts for images, war-aria attributes, etc. and was happy.
 Broken links: 
 - Tested and confirmed
+
 compatibility notes: 
 - I stated this above but essentially not all browsers support certain fonts or container types which is accounted for in the fundamental behavior or default of the site
+
 Known Limitations/Responsive regression tests:
 - While I've simulated mobile and all dropdowns for phone options work with the layout,
-I cannot account for every mobile device. Though I've tried to build the site in such a way that it does not need to know what a specific devices dimensions are and would adapt to almost any viewport. I have capped the font sizes so there would likely be a limited scale to fonts if it were on a very large tv. 
+I cannot account for every mobile device. Though I've tried to build the site in such a way that it does not need to know what a specific devices dimensions are and would adapt to almost any viewport. I have capped the font sizes so there would likely be a limited scale to fonts if it were on a very large tv
+
+
+
+
+Technical Defense
+---------------------
+I built a portfolio site to meet show basic qualifications, skill sets and act as an addition to resume. 
+What I fixed: I adapted image specifications to pass, I got rid of font in font stack, fixed link interaction feedback,improved internal linking,  added  author metadata,  changed font variability/syntax, and added exceptions to general rule in font where applicable.  
+
+What remains limited: I desperately want to add more to projects page for showcasing web design but I felt doing it in the site/showing the full range of work, etc. would not showcase the work well without JavaScript.
+
+
+
