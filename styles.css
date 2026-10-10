@@ -409,6 +409,9 @@
         color:var(--light);
        
     }
+    #education h4{
+        line-height: 1;
+    }
 
 
     .three-card{
@@ -487,13 +490,14 @@
         font-size: var(--body-size);
         font-weight: bold;
         font-family: inherit;
+        
     }
     input:placeholder-shown{
-        font-size: medium;
+        font-size: var(--body-size);
         font-weight: normal;
     }
     textarea:placeholder-shown{
-        font-Size: larger;
+        font-Size: var(--body-size);
     }
 
 
